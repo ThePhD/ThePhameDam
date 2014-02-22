@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Shepard.h"
 #include "Sheep.h"
+#include "Wolf.h"
 #include <Furrovine++/Input/MouseDevice.h>
 #include <Furrovine++/Graphics/NymphBatch.h>
 #include <Furrovine++/Graphics/GraphicsDevice2D.h>
@@ -15,9 +16,12 @@ private:
 	Fur::Text::TextResources* textresources;
 	Furrovine::Graphics::NymphBatch* nymphbatch;
 	Fur::Input::MouseDevice* mouse;
+	Fur::Text::RasterFont font;
 
 	Shepard shepard;
 	std::vector<Sheep> sheeps;
+	std::vector<Wolf> wolves;
+	float grace;
 
 public:
 

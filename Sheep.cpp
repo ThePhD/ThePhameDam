@@ -16,27 +16,27 @@ void Sheep::Render( ) {
 
 void Sheep::Update( ) {
 	const float maxturn = Mathema<float>::Pi;
-	const float tickstomax = 40.0f; // Assuming 60 fps at the moment
+	const float tickstomax = 10.0f; // Assuming 60 fps at the moment
 	Vector2 target = shepard->pos;
 	Vector2 direction = pos.direction( target );
+	// Get a number representing how close we need to be.
 	if ( target.distance_to( pos ) > speed ) {
 		++ticks;
-		// Get a number representing how close we need to be.
-		float coefficient = Mathema<float>::MiniMax( ( ticks / tickstomax ), 0.0f, 1.0f );
 		// We're not close enough
-		vel = direction * ( speed * coefficient );
 	}
 	else {
-		vel *= 0.95f;
-		// Decay speed extremely
-		ticks = 0.0f;
+		// Decay speed a bit
+		ticks *= 0.90f;
 	}
+	float coefficient = Mathema<float>::MiniMax( ( ticks / tickstomax ), 0.0f, 10.0f * ( speed / 90.0f ) );
+	Vector2 targetvelocity = direction * ( speed * coefficient );
+	vel.lerp( targetvelocity, 0.25f );
 
 	pos += vel * ( 1.0f / 60.0f ); // until we get game time in here, assuming 60 FPS
 }
 
 Sheep::Sheep( Shepard& shep, Fur::Graphics::NymphBatch& nymphbatch ) : shepard( &shep ), batch( &nymphbatch ) {
 	sheepsprite = TextureLoader( nymphbatch.Device( ) )( String( "Sheep.png" ) );
-	speed = 5.0f;
+	speed = 90.0f - 30.0f * static_cast<float>( std::rand( ) / static_cast<float>( RAND_MAX ) );
 	ticks = 0.0f;
 }

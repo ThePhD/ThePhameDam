@@ -1,4 +1,5 @@
-﻿#include "types.h"
+﻿#include <ctime>
+#include "types.h"
 #include "StateStack.h"
 #include "JamState.h"
 #include "PauseState.h"
@@ -76,6 +77,16 @@ protected:
 				Message<KeyboardEvent> keyboard = message.as<KeyboardEvent>( );
 				Input::KeyboardState::ManipulateState( keyboard.item.Key, keyboard.item.Down, 0 );
 				break; }
+			case MessageId::Window: {
+				Message<WindowEvent> windowm = message.as<WindowEvent>( );
+				switch ( windowm.item.Signal ) {
+				case WindowEventSignal::Quit:
+				case WindowEventSignal::Destroy:
+					Exit( );
+					break;
+				}
+				windowm.item;
+				break; }
 			case MessageId::None:
 			default:
 				break;
@@ -100,7 +111,7 @@ protected:
 	}
 
 	void Render( ) {
-		graphics.Clear( Color( 96, 96, 128, 128 ) );
+		graphics.Clear( Colors::Black );
 		batch.Begin( );
 		states.Render( );
 		batch.End( );
@@ -109,6 +120,7 @@ protected:
 };
 
 int main( ) {
+	std::srand( static_cast<unsigned int>( std::time( 0 ) ) );
 	PhameDam phamedam{ };
 	phamedam.Run( );
 }
