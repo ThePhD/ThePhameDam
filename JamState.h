@@ -5,7 +5,7 @@
 #include <Furrovine++/Graphics/NymphBatch.h>
 #include <Furrovine++/Graphics/GraphicsDevice2D.h>
 
-class PartyState : public State {
+class JamState : public State {
 private:
 	Fur::Graphics::GraphicsDevice* graphics;
 	Fur::Graphics::GraphicsDevice2D* graphics2d;
@@ -14,7 +14,7 @@ private:
 	
 public:
 
-	PartyState( Fur::Graphics::GraphicsDevice& graphics, 
+	JamState( Fur::Graphics::GraphicsDevice& graphics, 
 		Fur::Graphics::GraphicsDevice2D& graphics2d,
 		Fur::Text::TextResources& textresources,
 		Fur::Graphics::NymphBatch& nymphbatch ) 
