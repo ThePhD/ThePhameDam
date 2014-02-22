@@ -3,6 +3,7 @@
 #include "types.h"
 #include "State.h"
 #include <Furrovine++/Graphics/NymphBatch.h>
+#include <Furrovine++/Input/KeyboardDevice.h>
 
 class PauseState : public State {
 private:

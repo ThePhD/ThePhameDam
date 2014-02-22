@@ -11,9 +11,13 @@ public:
 
 	StateStack( );
 
-	void Push( State* state );
+	void Push( State& state );
 
 	void Pop( );
+
+	State& Peek( );
+	
+	bool Contains( State& state );
 
 	void Update( );
 
