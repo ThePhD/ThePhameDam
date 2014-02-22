@@ -5,12 +5,16 @@
 #include <Furrovine++/Graphics/NymphBatch.h>
 #include <Furrovine++/Graphics/Texture2D.h>
 
-class Player {
-public:
+class Shepard {
+private:
 	Fur::Input::MouseDevice* mouse;
 	Fur::Graphics::NymphBatch* batch;
+	Fur::Graphics::Texture2D canesprite;
 
-	Player( Fur::Input::MouseDevice& mousedevice, Fur::Graphics::NymphBatch& nymphbatch );
+public:
+	Fur::Vector2 pos;
+
+	Shepard( Fur::Input::MouseDevice& mousedevice, Fur::Graphics::NymphBatch& nymphbatch );
 
 	void Update( );
 

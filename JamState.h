@@ -2,7 +2,8 @@
 
 #include "types.h"
 #include "State.h"
-#include "Player.h"
+#include "Shepard.h"
+#include "Sheep.h"
 #include <Furrovine++/Input/MouseDevice.h>
 #include <Furrovine++/Graphics/NymphBatch.h>
 #include <Furrovine++/Graphics/GraphicsDevice2D.h>
@@ -15,7 +16,8 @@ private:
 	Furrovine::Graphics::NymphBatch* nymphbatch;
 	Fur::Input::MouseDevice* mouse;
 
-	Player player;
+	Shepard shepard;
+	std::vector<Sheep> sheeps;
 
 public:
 

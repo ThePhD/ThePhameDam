@@ -46,16 +46,16 @@ public:
 	graphics( window ),
 	graphics2d( graphics ),
 	batch( graphics ),
-	jamstate( graphics, graphics2d, textresources, batch, mousedevice, keyboarddevice ),
-	pausestate( graphics, batch, mousedevice, keyboarddevice ) {
+	jamstate( graphics, graphics2d, textresources, batch, mousedevice ),
+	pausestate( graphics, batch ) {
 		WindowService = window;
 		GraphicsService = graphics;
 		Graphics2DService = graphics2d;
 		states.Push( jamstate );
-		graphics.SetBlend( BlendState( BlendState::AlphaBlend ) );
-		image = ImageLoader( )( load_single, "Player.png" );
-		texture = TextureLoader( graphics )( image );
+		graphics.SetBlend( BlendState::AlphaBlend );
 		window.Show( );
+		//Woops!
+		TargetTimeStep( TimeSpan::FromSeconds( 1.0 / 60.0 ) );
 	}
 
 protected:
@@ -85,7 +85,9 @@ protected:
 	}
 
 	void Update( ) {
-		if ( keyboarddev.Pressed( Key::Enter ) ) {
+		mousedevice.Update( );
+		keyboarddevice.Update( );
+		if ( keyboarddevice.Pressed( Key::Enter ) ) {
 			State& currstate = states.Peek( );
 			if ( &currstate != &pausestate ) {
 				states.Push( pausestate );
@@ -99,7 +101,6 @@ protected:
 
 	void Render( ) {
 		graphics.Clear( Color( 96, 96, 128, 128 ) );
-		graphics.RenderImage( image );
 		batch.Begin( );
 		states.Render( );
 		batch.End( );

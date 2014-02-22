@@ -74,7 +74,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="JamState.cpp" />
     <ClCompile Include="PauseState.cpp" />
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Sheep.cpp" />
+    <ClCompile Include="Shepard.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateStack.cpp" />
   </ItemGroup>
@@ -89,7 +90,8 @@
   <ItemGroup>
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="JamState.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="Shepard.h" />
+    <ClInclude Include="Sheep.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateStack.h" />
     <ClInclude Include="types.h" />
