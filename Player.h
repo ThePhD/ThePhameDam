@@ -6,7 +6,7 @@
 #include <Furrovine++/Graphics/Texture2D.h>
 
 class Player {
-
+public:
 	Fur::Input::MouseDevice* mouse;
 	Fur::Graphics::NymphBatch* batch;
 
