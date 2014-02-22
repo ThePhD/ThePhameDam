@@ -1,6 +1,6 @@
 ﻿#include "types.h"
 #include "StateStack.h"
-#include "PartyState.h"
+#include "JamState.h"
 #include "PauseState.h"
 
 #include <Furrovine++/FurrovineGame.h>
@@ -18,7 +18,7 @@ using namespace Furrovine::Graphics;
 using namespace Furrovine::Text;
 using namespace Furrovine::Pipeline;
 
-class Snaku : public FurrovineGame {
+class PhameDam : public FurrovineGame {
 private:
 	WindowDriver windowdriver;
 	Window window;
@@ -35,9 +35,9 @@ private:
 
 public:
 
-	Snaku( ) : FurrovineGame( ),
+	PhameDam( ) : FurrovineGame( ),
 	windowdriver( ),
-	window( windowdriver, WindowDescription( "~ Snaku ~" ) ),
+	window( windowdriver, WindowDescription( "~ The Phame Dam ~" ) ),
 	graphics( window ),
 	graphics2d( graphics ),
 	batch( graphics ),
@@ -87,6 +87,6 @@ protected:
 };
 
 int main( ) {
-	Snaku snaku{ };
-	snaku.Run( );
+	PhameDam phamedam{ };
+	phamedam.Run( );
 }
