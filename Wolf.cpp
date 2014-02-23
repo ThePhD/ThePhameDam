@@ -26,18 +26,19 @@ Wolf::Wolf( Shepard& shep, Fur::Graphics::NymphBatch& nymphbatch ) : batch( &nym
 	std::random_device rd;
 	std::mt19937 gen( rd( ) ); 
 	std::uniform_int_distribution<> dist( 0, 1 );
-	bool horizontal = static_cast<bool>( dist( gen ) );
-	bool opposite = static_cast<bool>( dist( gen ) );
+	bool horizontal = dist( gen ) == 1;
+	bool opposite = dist( gen ) == 1;
+	float skew = 50 - 100 * static_cast<float>( std::rand( ) / static_cast<float>( RAND_MAX ) );
 	speed = 500.0f - 130.0f * static_cast<float>( std::rand( ) / static_cast<float>( RAND_MAX ) );
 	if ( horizontal ) {
-		pos.x = opposite ? 600.0f : 0.0f;
-		pos.y = shep.pos.y;
+		pos.x = opposite ? 800.0f : 0.0f;
+		pos.y = shep.pos.y + skew;
 		vel.x = opposite ? -1.0f : 1.0f;
 		vel.y = 0.0f;
 	}
 	else {
 		pos.y = opposite ? 600.0f : 0.0f;
-		pos.x = shep.pos.x;
+		pos.x = shep.pos.x + skew;
 		vel.y = opposite ? -1.0f : 1.0f;
 		vel.x = 0.0f;
 	}

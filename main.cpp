@@ -44,7 +44,7 @@ public:
 
 	PhameDam( ) : FurrovineGame( ),
 	windowdriver( ),
-	window( windowdriver, WindowDescription( "~ The Phame Dam ~" ) ),
+	window( windowdriver, WindowDescription( "Testu" ) ),
 	graphics( window ),
 	graphics2d( graphics ),
 	batch( graphics ),
@@ -115,7 +115,12 @@ protected:
 	}
 
 	void Render( ) {
+		graphics.Clear( Colors::PastelGrey );
+		//graphics.RenderImage( texture );
+		//graphics.RenderImage( texture, texture.Bounds().Shift( 5, 10 ) );
+		batch.Begin( );
 		states.Render( );
+		batch.End( );
 	}
 
 };
