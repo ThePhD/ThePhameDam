@@ -116,10 +116,9 @@ protected:
 
 	void Render( ) {
 		graphics.Clear( Colors::Black );
-		graphics.RenderImage( image );
-		/*batch.Begin( );
+		batch.Begin( );
 		states.Render( );
-		batch.End( );*/
+		batch.End( );
 	}
 
 };
