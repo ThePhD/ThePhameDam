@@ -52,7 +52,7 @@ public:
 	pausestate( graphics, batch ) {
 		WindowService = window;
 		GraphicsService = graphics;
-		Graphics2DService = graphics2d;
+		//Graphics2DService = graphics2d;
 		states.Push( jamstate );
 		graphics.SetBlend( BlendState::NonPremultiplied );
 		
@@ -115,10 +115,7 @@ protected:
 	}
 
 	void Render( ) {
-		graphics.Clear( Colors::Black );
-		batch.Begin( );
 		states.Render( );
-		batch.End( );
 	}
 
 };

@@ -98,6 +98,16 @@
     <ClInclude Include="types.h" />
     <ClInclude Include="Wolf.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Sheep.png" />
+    <Image Include="Shepard.png" />
+    <Image Include="Wolf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sheep.psd" />
+    <None Include="Shepard.psd" />
+    <None Include="Wolf.psd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
