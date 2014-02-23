@@ -18,7 +18,7 @@ void JamState::Render( ) {
 	String text = "Game Over";
 	Vector2 measure = font.MeasureString( text );
 	Fur::Viewport viewport = graphics->GetViewport( );
-	nymphbatch->RenderString( font, text, viewport.center( ) - ( measure / 2.0f ) );
+	nymphbatch->RenderString( font, text, viewport.Center( ) - ( measure / 2.0f ) );
 }
 
 void JamState::Update( ) {
@@ -26,7 +26,7 @@ void JamState::Update( ) {
 
 	std::random_device rd;
 	std::mt19937 gen( rd( ) );
-	std::uniform_int_distribution<> dist( 0, 30 );
+	std::uniform_int_distribution<> dist( 0, 10 );
 	
 	grace -= 1;
 

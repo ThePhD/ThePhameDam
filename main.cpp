@@ -14,6 +14,7 @@
 #include <Furrovine++/Pipeline/TextureLoader.h>
 #include <Furrovine++/Input/MouseDevice.h>
 #include <Furrovine++/Input/KeyboardDevice.h>
+#include <Furrovine++/Pipeline/PNGSaver.h>
 
 using namespace Furrovine;
 using namespace Furrovine::IO;
@@ -53,7 +54,10 @@ public:
 		GraphicsService = graphics;
 		Graphics2DService = graphics2d;
 		states.Push( jamstate );
-		graphics.SetBlend( BlendState::AlphaBlend );
+		graphics.SetBlend( BlendState::NonPremultiplied );
+		
+		image = ImageLoader( )( "Shepard.png" )[0];
+		texture = TextureLoader( graphics )( image );
 		window.Show( );
 		//Woops!
 		TargetTimeStep( TimeSpan::FromSeconds( 1.0 / 60.0 ) );
@@ -112,9 +116,10 @@ protected:
 
 	void Render( ) {
 		graphics.Clear( Colors::Black );
-		batch.Begin( );
+		graphics.RenderImage( image );
+		/*batch.Begin( );
 		states.Render( );
-		batch.End( );
+		batch.End( );*/
 	}
 
 };

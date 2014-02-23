@@ -7,7 +7,7 @@ void PauseState::Render( ) {
 	String text = "P a u s e";
 	Vector2 measure = font.MeasureString( text );
 	Fur::Viewport viewport = graphics->GetViewport( );
-	nymphbatch->RenderString( font, text, viewport.center() - ( measure / 2.0f ) );
+	nymphbatch->RenderString( font, text, viewport.Center() - ( measure / 2.0f ) );
 }
 
 PauseState::PauseState( Fur::Graphics::GraphicsDevice& graphics, Fur::Graphics::NymphBatch& nymphbatch ) 
