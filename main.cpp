@@ -8,6 +8,7 @@
 #include <Furrovine++/Text/RasterFont.h>
 #include <Furrovine++/Graphics/Window.h>
 #include <Furrovine++/Graphics/BlendState.h>
+#include <Furrovine++/Graphics/DepthStencilState.h>
 #include <Furrovine++/Graphics/NymphBatch.h>
 #include <Furrovine++/Text/TextResources.h>
 #include <Furrovine++/Pipeline/ImageLoader.h>
@@ -52,9 +53,8 @@ public:
 	pausestate( graphics, batch ) {
 		WindowService = window;
 		GraphicsService = graphics;
-		//Graphics2DService = graphics2d;
+		Graphics2DService = graphics2d;
 		states.Push( jamstate );
-		graphics.SetBlend( BlendState::NonPremultiplied );
 		
 		image = ImageLoader( )( "Shepard.png" )[0];
 		texture = TextureLoader( graphics )( image );
@@ -72,14 +72,8 @@ protected:
 			MessageData& message = opmessage.value();
 			switch ( message.header.id ) {
 			case MessageId::Mouse: {
-				Message<MouseEvent> mouse = message.as<MouseEvent>( );
-				Input::MouseState::ManipulateState( mouse.item.Buttons, mouse.item.Relative.x, mouse.item.Relative.y, 0 );
-				Input::MouseState::ManipulateState( mouse.item.Wheel.x, false, mouse.item.Relative.x, mouse.item.Relative.y, 0 );
-				Input::MouseState::ManipulateState( mouse.item.Wheel.y, true, mouse.item.Relative.x, mouse.item.Relative.y, 0 );
 				break; }
 			case MessageId::Keyboard: {
-				Message<KeyboardEvent> keyboard = message.as<KeyboardEvent>( );
-				Input::KeyboardState::ManipulateState( keyboard.item.Key, keyboard.item.Down, 0 );
 				break; }
 			case MessageId::Window: {
 				Message<WindowEvent> windowm = message.as<WindowEvent>( );
@@ -116,8 +110,6 @@ protected:
 
 	void Render( ) {
 		graphics.Clear( Colors::PastelGrey );
-		//graphics.RenderImage( texture );
-		//graphics.RenderImage( texture, texture.Bounds().Shift( 5, 10 ) );
 		batch.Begin( );
 		states.Render( );
 		batch.End( );
